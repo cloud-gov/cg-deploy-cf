@@ -231,13 +231,7 @@ jobs:
           - get: terraform-templates
             resource: terraform-config
             trigger: true
-          - get: src
-            resource: src
-            trigger: false
             passed: [set-self]
-          - get: terraform-yaml
-            resource: terraform-yaml-development
-            trigger: true
           - get: pipeline-tasks
           - get: general-task
       - task: terraform-plan
@@ -980,10 +974,7 @@ jobs:
           - get: terraform-templates
             resource: terraform-config
             trigger: true
-            passed: [terraform-apply-development]
-          - get: terraform-yaml
-            resource: terraform-yaml-staging
-            trigger: true
+            passed: [terraform-apply-apps-development]
           - get: pipeline-tasks
           - get: general-task
       - task: terraform-plan
@@ -1622,10 +1613,7 @@ jobs:
       - in_parallel:
           - get: terraform-templates
             resource: terraform-config
-            passed: [acceptance-tests-staging]
-            trigger: true
-          - get: terraform-yaml
-            resource: terraform-yaml-production
+            passed: [terraform-apply-apps-staging]
             trigger: true
           - get: pipeline-tasks
           - get: general-task
@@ -1671,7 +1659,6 @@ jobs:
       - in_parallel:
           - get: terraform-templates
             resource: terraform-config
-
             passed: [terraform-plan-apps-production]
           - get: pipeline-tasks
           - get: general-task
