@@ -187,7 +187,7 @@ jobs:
         file: terraform-templates/terraform/terraform-apply.yml
         params: &tf-development
           TERRAFORM_ACTION: plan
-          TEMPLATE_SUBDIR: terraform/stack
+          TEMPLATE_SUBDIR: terraform/stacks/cf
           STACK_NAME: cf-development
           S3_TFSTATE_BUCKET: ((tf-state-bucket))
           AWS_DEFAULT_REGION: ((aws-region))
@@ -869,7 +869,7 @@ jobs:
         file: terraform-templates/terraform/terraform-apply.yml
         params: &tf-staging
           TERRAFORM_ACTION: plan
-          TEMPLATE_SUBDIR: terraform/stack
+          TEMPLATE_SUBDIR: terraform/stacks/cf
           STACK_NAME: cf-staging
           S3_TFSTATE_BUCKET: ((tf-state-bucket))
           AWS_DEFAULT_REGION: ((aws-region))
@@ -1447,7 +1447,7 @@ jobs:
         file: terraform-templates/terraform/terraform-apply.yml
         params: &tf-production
           TERRAFORM_ACTION: plan
-          TEMPLATE_SUBDIR: terraform/stack
+          TEMPLATE_SUBDIR: terraform/stacks/cf
           STACK_NAME: cf-production
           S3_TFSTATE_BUCKET: ((tf-state-bucket))
           AWS_DEFAULT_REGION: ((aws-region))
